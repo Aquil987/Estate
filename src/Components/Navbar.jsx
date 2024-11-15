@@ -1,7 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {assets} from '../assets/assets'
 const Navbar = () => {
     const [showMenu, setShowMenu]=useState(false)
+    useEffect(()=>{
+        if(showMenu){
+            document.body.style.overflow=='hidden'
+        }
+        else{
+            document.body.style.overflow='auto'
+        }
+        return ()=>{
+            document.body.style.overflow='auto'
+        };
+    },[showMenu])
   return (
     <div className='absolute top-0 left-0 w-full z-10'>
         <div className='container mx-auto px-6 py-4 flex justify-between align-center md:px-20 md:lg-32 bg-transparent'> 
